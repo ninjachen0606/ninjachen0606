@@ -64,17 +64,10 @@ protected void onCreate(Bundle savedInstanceState) {
 public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-
-        mMap.setMapStyle(
-                MapStyleOptions.loadRawResourceStyle(
-                        this, R.raw.style_json));
-
-
         List<Address> addressList = null;
         MarkerOptions markerOptions = new MarkerOptions ();
 
-        LatLng sydney = new LatLng (-33.89440695735913,151.20481783518255);
+        LatLng sydney = new LatLng (-33.89440695735913,151.20481783518255); // 
 
                 Geocoder geocoder = new Geocoder (this);
 
