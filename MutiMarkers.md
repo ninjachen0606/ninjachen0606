@@ -29,7 +29,7 @@
 
 ```java
 
-public class    address_f extends FragmentActivity implements OnMapReadyCallback {
+public class    googlemap extends FragmentActivity implements OnMapReadyCallback {
 
 
 pprivate DatabaseManager db;
