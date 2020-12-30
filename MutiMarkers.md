@@ -4,7 +4,7 @@
 <img src="https://upload.cc/i1/2020/12/29/hV31vq.png" style="zoom:70%" />
 
 
-### Step1. 在dbmanager建立一個function return 需要用到的字串.(字串拿去做listview了,依自己的需求改成arr[]->step2)
+### Step1. 在dbmanager建立一個function return 需要用到的字串.(字串拿去做listview了,依自己的需求改成陣列)
 #### return例子:"newtown,chippendale,148 crown NSW..."
 ```java
   public String retrieveRows_Firend_Location()
@@ -60,7 +60,7 @@
         return nameRows;
     }
 ```
-### Step2. googlemap.java 
+### Step2. googlemap.java 將字串改成陣列
 
 ```java
 
@@ -93,7 +93,8 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ```
 
-### Step3. googlemap.java 的 onMapReady
+### Step3. googlemap.java 的 onMapReady 
+#### Needed functions: Geocoder, MarkerOptions
 ```java
 
 public void onMapReady(GoogleMap googleMap) {
@@ -125,7 +126,7 @@ public void onMapReady(GoogleMap googleMap) {
                                 markerOptions.icon (BitmapDescriptorFactory.defaultMarker (BitmapDescriptorFactory.HUE_AZURE));
 
                                 mMap.addMarker (markerOptions);
-                                mMap.moveCamera (CameraUpdateFactory.newLatLng (sydney));
+                                mMap.moveCamera (CameraUpdateFactory.newLatLng (sydney)); //雖然不影響,但是應該不用放在迴圈裏面
                                 mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
                             }
