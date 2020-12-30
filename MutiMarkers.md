@@ -4,7 +4,7 @@
 <img src="https://upload.cc/i1/2020/12/29/hV31vq.png" style="zoom:70%" />
 
 
-### Step1. 在dbmanager建立一個function return locationRows字串.()
+### Step1. 在dbmanager建立一個function return 需要用到的字串.(字串拿去做listview了,依自己的需求改成arr[]->step2)
 #### return例子:"newtown,chippendale,148 crown NSW..."
 ```java
   public String retrieveRows_Firend_Location()
@@ -15,7 +15,7 @@
         cursor.moveToFirst();
         while (cursor.isAfterLast() == false)
         {
-            locationRows += cursor.getString(5)+","; //todo_loaction
+            locationRows += cursor.getString(5)+","; //Address
             cursor.moveToNext();
         }
         if (cursor != null && !cursor.isClosed())
@@ -24,6 +24,41 @@
         }
         return locationRows;
     }  
+    
+      public String retrieveRows_Firend_fn()
+    {
+        String nameRows = "";
+        String[] columns = new String[] {"Friend", "FirstName", "LastName","Gender","Age","Address", "Image"};
+        Cursor cursor = db.query(DB_TABLE, columns, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false)
+        {
+            nameRows += cursor.getString(1)+","; // FirstName
+            cursor.moveToNext();
+        }
+        if (cursor != null && !cursor.isClosed())
+        {
+            cursor.close();
+        }
+        return nameRows;
+    }
+    public String retrieveRows_Firend_ln()
+    {
+        String nameRows = "";
+        String[] columns = new String[] {"Friend", "FirstName", "LastName","Gender","Age","Address", "Image"};
+        Cursor cursor = db.query(DB_TABLE, columns, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false)
+        {
+            nameRows += cursor.getString(2)+","; // LastName
+            cursor.moveToNext();
+        }
+        if (cursor != null && !cursor.isClosed())
+        {
+            cursor.close();
+        }
+        return nameRows;
+    }
 ```
 ### Step2. googlemap.java 
 
@@ -67,7 +102,7 @@ public void onMapReady(GoogleMap googleMap) {
         List<Address> addressList = null;
         MarkerOptions markerOptions = new MarkerOptions ();
 
-        LatLng sydney = new LatLng (-33.89440695735913,151.20481783518255); // 
+        LatLng sydney = new LatLng (-33.89440695735913,151.20481783518255); // default location
 
                 Geocoder geocoder = new Geocoder (this);
 
@@ -75,7 +110,7 @@ public void onMapReady(GoogleMap googleMap) {
                 {
                     for (int i = 0; i<address.length; i++){
 
-                        addressList = geocoder.getFromLocationName (address[i],6); //這個六是指getFromLocationName的東西 像是getlongitude(),getLatitude()
+                        addressList = geocoder.getFromLocationName (address[i],6); //這個6指getFromLocationName傳出來的東西 像是getlongitude(),getLatitude()
 
 
                         if (addressList != null){
