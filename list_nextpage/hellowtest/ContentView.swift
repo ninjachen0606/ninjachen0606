@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        //create a navigation bar
         NavigationView {
-            
             List(0 ..< 20) { item in
+                //link to next page
                 NavigationLink(
                     destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
                     label: {
@@ -19,6 +20,7 @@ struct ContentView: View {
                             .resizable()
                             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                             .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        //leading(最左)
                         VStack(alignment: .leading, spacing: 0) {
                         
                             Text("Hello, world!")
@@ -30,6 +32,7 @@ struct ContentView: View {
                     })
             
             }
+            //set NavigationView.navigationTitile 
             .navigationTitle(Text("Navigation Bar"))
           
             
