@@ -37,6 +37,7 @@ struct ContentView: View {
                     .padding()
                     .background(Color.red)
                     .cornerRadius(8)
+                    //Once the button is pressed alertPresented will be true
                     .alert(isPresented: $alertPresented, content: {
                         Alert(title: Text("Would you like to purchase?"), primaryButton: .default(Text("Purchase"), action:{
                             //change backgroundUpdated false or true
